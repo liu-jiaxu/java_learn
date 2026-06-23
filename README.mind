@@ -14,4 +14,4 @@
 （3）lable标签
     lable: for (int i = 2; i <= 100000; i++)
     continue lable
-(4)
+（4）
