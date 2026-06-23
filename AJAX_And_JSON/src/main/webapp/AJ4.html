@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+
+    <script>
+
+        $(function(){
+
+           $("#username").blur(function(){
+               // 获取输入框的值
+               var username = $(this).val();
+               // 发送ajax请求
+                   // userExist:true/false
+                   // msg:用户存在/信息可用
+               $.get("aj4",{username:username},function(data){
+                   // 判断键的值是否为true
+                   var span = $("#s_username");
+                   if(data.userExist){
+                       // 用户名存在
+                       span.css("color","red");
+                       span.html(data.msg);
+                   } else {
+                       // 用户名不存在
+                       span.css("color","green");
+                       span.html(data.msg);
+                   }
+               },"json"); // 注：此处指明传入的字符串为json，否则只是传回普通的字符串，无法解析；或者在发送请求时设置格式
+           });
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <form>
+        <input id="username" type="text" name="username" placeholder="请输入用户名">
+        <span id="s_username"></span><br>
+        <input type="password" name="password" placeholder="请输入密码"><br>
+        <input type="submit" value="注册">
+    </form>
+
+</body>
+</html>

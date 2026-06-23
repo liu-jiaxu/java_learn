@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="N/A" external.linked.project.path="D:\SoftwareInstallation\ideaIU_20220301\file_saving\Java_Backend\Scala_Test" external.root.project.path="$MODULE_DIR$/../../Scala_Test" external.system.id="SBT" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../Scala_Test">
+      <sourceFolder url="file://$MODULE_DIR$/../../Scala_Test/src/main/scala" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Scala_Test/src/test/scala" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Scala_Test/target" />
+      <excludeFolder url="file://$MODULE_DIR$/../../Scala_Test/project/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

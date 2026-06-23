@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns="http://www.itcast.cn/xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.itcast.cn/xml" elementFormDefault="qualified">
+
+    <!--定义一个名为students的元素，类型为自定义的studentsType-->
+    <xsd:element name="students" type="studentsType"/>
+
+    <!--声明自定义类型studentsType-->
+    <xsd:complexType name="studentsType">
+        <!--sequence表示按顺序出现其中声明的标签元素-->
+        <xsd:sequence>
+            <!--定义一个名为student的元素，类型为自定义的studentType，最少出现0次，最多未指定-->
+            <xsd:element name="student" type="studentType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--声明自定义类型studentType-->
+    <xsd:complexType name="studentType">
+        <xsd:sequence>
+            <!--按顺序声明三个元素，分别声明类型-->
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="age" type="ageType" />
+            <xsd:element name="sex" type="sexType" />
+        </xsd:sequence>
+        <!--声明attribute属性及其对应类型-->
+        <xsd:attribute name="number" type="numberType" use="required"/>
+    </xsd:complexType>
+
+    <!--下方分别声明多个类型-->
+    <!--simpleType为简单类型-->
+    <xsd:simpleType name="sexType">
+        <xsd:restriction base="xsd:string">
+            <!--规定枚举取值-->
+            <xsd:enumeration value="male"/>
+            <xsd:enumeration value="female"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ageType">
+        <xsd:restriction base="xsd:integer">
+            <!--取值范围-->
+            <xsd:minInclusive value="O"/>
+            <xsd:maxInclusive value="256"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="numberType">
+        <xsd:restriction base="xsd:string">
+            <!--规定元素值必须为heima_加上四位数字(\d{4}表示4位数字)-->
+            <xsd:pattern value="heima_\d{4}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

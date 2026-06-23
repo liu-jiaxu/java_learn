@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jq</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+
+    <script>
+
+        // $.ajax()方式实现
+        function fun(){
+
+            // 注意参数后加逗号，最后一个不加
+            $.ajax({
+                url:"aj1", // 路径
+                type:"POST", // 请求方式
+                data:"username=jack&age=23", // 请求参数
+                    // data={"username":"jack","age":"23"} js写法，推荐
+                success: function(data){
+                    alert(data);
+                }, // 响应成功后的回调函数，data参数接收resp.getWriter().write()返回值
+                error:function (){
+                    alert("Error!");
+                }, // 响应出错时执行的回调函数
+                dataType: "text" // 设置接受到的响应数据的格式
+            });
+
+        }
+
+         // $.get()
+         function getfun() {
+            $.get("/aj1",{username:"rose",age:22},function(data){alert(data)},"text");
+         }
+
+         // $.post()
+         function postfun() {
+             $.post("/aj1",{username:"rose",age:22},function(data){alert(data)},"text");
+         }
+
+    </script>
+
+    <input type="button" value="发送异步请求" onclick="fun();">
+    <input type="button" value="发送异步请求" onclick="getfun();">
+    <input type="button" value="发送异步请求" onclick="postfun();">
+    <input>
+
+</body>
+</html>

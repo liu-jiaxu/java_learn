@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jsp-api (24)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/libs/jsp-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/libs/servlet-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

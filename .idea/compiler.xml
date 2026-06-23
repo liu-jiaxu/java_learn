@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="CookieSession_And_JSP_Test" />
+        <module name="Servlet" />
+        <module name="CookieSession_And_JSP" />
+        <module name="FilterListener" />
+        <module name="Redis_And_Jedis" />
+        <module name="AJAX_And_JSON" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="e_DataStructure" target="16" />
+      <module name="h_SSM" target="11" />
+      <module name="i_SpringBoot2" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

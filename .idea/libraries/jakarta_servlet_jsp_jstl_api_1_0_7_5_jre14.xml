@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jakarta.servlet.jsp.jstl-api-1.0.7.5-jre14">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-1.0.7.5-jre14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/WEB-INF/lib/jstl-impl-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

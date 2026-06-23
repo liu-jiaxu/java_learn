@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="c3p0-0.9.1.2 (5)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/c3p0-0.9.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/mysql-connector-java-8.0.27-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/spring-jdbc-4.2.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/spring-tx-4.2.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/commons-beanutils-1.8.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/jstl-impl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/jakarta.servlet.jsp.jstl-2.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/druid-1.1.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/spring-core-4.2.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/spring-beans-4.2.4.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP_Test/libs/jakarta.servlet.jsp.jstl-api-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

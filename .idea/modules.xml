@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Tomcat/Tomcat.iml" filepath="$PROJECT_DIR$/Tomcat/Tomcat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/a_Java_Basics/a_Java_Basics.iml" filepath="$PROJECT_DIR$/a_Java_Basics/a_Java_Basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/b_Database/b_Database.iml" filepath="$PROJECT_DIR$/b_Database/b_Database.iml" />
+      <module fileurl="file://$PROJECT_DIR$/c_JDBC/c_JDBC.iml" filepath="$PROJECT_DIR$/c_JDBC/c_JDBC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/d_Javaweb/d_Javaweb.iml" filepath="$PROJECT_DIR$/d_Javaweb/d_Javaweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/e_DataStructure/e_DataStructure.iml" filepath="$PROJECT_DIR$/e_DataStructure/e_DataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/f_DesignPattern/f_DesignPattern.iml" filepath="$PROJECT_DIR$/f_DesignPattern/f_DesignPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/g_Git_And_Maven/g_Git_And_Maven.iml" filepath="$PROJECT_DIR$/g_Git_And_Maven/g_Git_And_Maven.iml" />
+      <module fileurl="file://$PROJECT_DIR$/h_SSM/h_SSM.iml" filepath="$PROJECT_DIR$/h_SSM/h_SSM.iml" />
+      <module fileurl="file://$PROJECT_DIR$/i_SpringBoot/i_SpringBoot.iml" filepath="$PROJECT_DIR$/i_SpringBoot/i_SpringBoot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/studentmanage/studentmanage.iml" filepath="$PROJECT_DIR$/studentmanage/studentmanage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/untitled/.idea/modules/untitled-build.iml" filepath="$PROJECT_DIR$/untitled/.idea/modules/untitled-build.iml" />
+    </modules>
+  </component>
+</project>

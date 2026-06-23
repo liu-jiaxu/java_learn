@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>遍历</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+
+    <ul id="city">
+        <li>北京</li>
+        <li>上海</li>
+        <li>天津</li>
+        <li>重庆</li>
+    </ul>
+    <script type="text/javascript">
+        // 1.js遍历
+        /*$(function(){
+            var citys = $("#city li"); // 注意对象获取方式
+            for(var i = 0; i < citys.length; i++) {
+                console.log($(citys[i]).html());
+            }
+        });*/
+
+        // 2.jq对象.each(callback)，传入回调函数callback
+        /*$(function(){
+            var citys = $("#city li");
+            citys.each(function(index,element){
+                if($(element).html()  == "上海")
+                    console.log(index+" "+$(element).html());
+            });
+        });*/
+
+        // 3.$.each(object,[callback])
+        /*$(function(){
+            var citys = $("#city li");
+            $.each(citys,function(index,element){
+                if($(element).html()  == "上海" || $(element).html() == "北京")
+                    console.log(index+" "+$(element).html());
+            });
+        });*/
+
+        // 4.for..of:(jq3.0+)
+        $(function(){
+            for(li of $("#city li")){
+              console.log($(li).html());
+            }
+        });
+
+    </script>
+
+</body>
+</html>

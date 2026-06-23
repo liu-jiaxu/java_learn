@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js</title>
+</head>
+<body>
+
+    <script>
+
+        // 定义方法
+        function fun(){
+
+            // 1.创建核心对象
+            var xml;
+            if(window.XMLHttpRequest){
+                xml=new XMLHttpRequest();
+            } else {
+                xml=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            // 2.建立连接
+            /**
+             * 参数：
+             *     (1)请求方式：GET/POST
+             *         GET：请求参数在URL后拼接，send1方法无参数
+             *         POST：请求参数在send方法中定义
+             *     (2)请求URL：(可包含传递参数)
+             *     (3)同步true/异步false请求
+             */
+            xml.open("GET", "aj1?username=tom",true);
+
+            // 3.发送请求
+            xml.send();
+
+            // 4.接收并处理来自服务器的响应结果
+            if(xml.readyState == 4 && xml.status == 200) {
+                var responseText = xml.responseText; // 获取返回参数
+                alert(responseText);
+            }
+                /**
+                 * xml.readyState == 4
+                 *     0    UNSENT    代理被创建，但尚未调用 open() 方法。
+                 *     1    OPENED    open() 方法已经被调用。
+                 *     2    HEADERS_RECEIVED    send() 方法已经被调用，并且头部和状态已经可获得。
+                 *     3    LOADING    下载中；responseText 属性已经包含部分数据。
+                 *     4    DONE    下载操作已完成。
+                 * xml.status == 200
+                 *     100-500五种状态
+                 */
+
+        }
+
+    </script>
+
+    <input type="button" value="发送异步请求" onclick="fun();">
+
+    <input>
+        <!--同步请求时，只能等服务器端响应完成后才可以使用文本框，而异步在请求和响应时都可以使用文本框-->
+
+</body>
+</html>

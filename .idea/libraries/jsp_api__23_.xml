@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jsp-api (23)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/AJAX_And_JSON/libs/jsp-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/AJAX_And_JSON/libs/servlet-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

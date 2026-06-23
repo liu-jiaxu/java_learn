@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebContextManager">
+    <option name="state">
+      <map>
+        <entry key="file://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/CJ4_Test_showTime.jsp" value="file://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/CJ7_Test_jstl.jsp" value="file://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/Servlet/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/Servlet/src/main/webapp" />
+      </map>
+    </option>
+  </component>
+</project>

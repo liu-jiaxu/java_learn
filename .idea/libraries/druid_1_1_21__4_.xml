@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="druid-1.1.21 (4)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Redis_And_Jedis/lib/druid-1.1.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<!--xml的外部dtd文档-->
+
+<!--表示根标签必须为students，若设置为其它报错-->
+<!--表示students根标签中必须出现0次或多次student标签，若改为student+则表示必须出现至少一次student标签-->
+<!ELEMENT students (student*) >
+<!--student标签必须包含三个标签，必须按顺序写-->
+<!ELEMENT student (name,age,sex)>
+<!--#PCDATA表示为字符型-->
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!--student标签必须赋值number-->
+<!ATTLIST student number ID #REQUIRED>

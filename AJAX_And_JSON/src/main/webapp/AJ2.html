@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+
+    <script>
+
+        // 1.基本格式
+        var person = {"name":"John","age":"16","gender":"male","ismale":"true"}; // JSON对象person
+        document.write(person+"<br>");
+        document.write("<br>");
+
+        // 2.嵌套格式(和Map转换格式一致)
+        var persons = {
+            "persons":[
+                {"name":"John","age":"19","gender":"male","ismale":"true"},
+                {"name":"Amy","age":"17","gender":"female","ismale":"false"},
+            ]
+        };
+
+        // 3.数组嵌套(和List转换格式一致)
+        var ps = [
+            {"name":"John","age":"19","gender":"male","ismale":"true"},
+            {"name":"Amy","age":"17","gender":"female","ismale":"false"},
+        ];
+
+        // 4.获取数据
+        // 获取一般JSON对象数据
+        var name = person.name;
+        var age = person["age"];
+        document.writeln(name+":"+age+"<br>");
+        document.write("<br>");
+
+        // 获取JSON对象中的数组的值
+        var name1 = persons.persons[1].name;
+        var gender1 = persons.persons[1]["gender"];
+        document.writeln(name1+":"+gender1+"<br>");
+        document.write("<br>");
+        // 直接获取JSON中的数组并遍历
+        var p = persons.persons;
+        for(var i = 0;i<p.length;i++){
+            document.write(persons.persons[i].name+":"+persons.persons[i].age+"<br>");
+        }
+        document.write("<br>");
+
+        // 遍历获取JSON中的键和值
+        for(var key in person) {
+            document.writeln(key+":"+person[key]+"<br>");
+        }
+        document.write("<br>");
+        // 遍历获取数组中的JSON对象
+        for(var i = 0;i<ps.length;i++){
+            for(var key in ps[i]) {
+                document.writeln(key+":"+ps[i][key]+"<br>");
+            }
+        }
+        document.write("<br>");
+
+        // 5.json对象和json字符串相互转换
+        // 对象 -> 字符串
+        var personString = JSON.stringify(person);
+        document.writeln(personString);
+        document.write("<br>");
+        // 字符串 -> 对象
+        var personObject = JSON.parse(personString);
+        document.writeln(personObject.name);
+        document.writeln(personObject.age);
+
+    </script>
+
+</body>
+</html>

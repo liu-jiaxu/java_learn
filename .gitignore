@@ -1,0 +1,15 @@
+# 项目排除路径
+/a_Java_Basics/bin/
+/AJAX_And_JSON/target/
+/b_Database/bin/
+/CookieSession_And_JSP/target/
+/CookieSession_And_JSP_Test/target/
+/FilterListener/target/
+/out/
+/project/target/
+/Redis_And_Jedis/target/
+/Scala_Test/project/target/
+/Scala_Test/target/
+/Servlet/target/
+/studentmanage/bin/
+/target/

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+
+    <style>
+
+        #showDiv{
+            height: 100px;
+            width: 100px;
+            background:chartreuse;
+            margin: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <!--三种方式显示和隐藏元素-->
+    <input type="button" value="隐藏" onclick="hideFn()">
+    <input type="button" value="显示" onclick="showFn()">
+    <input type="button" value="切换" onclick="toggleFn()">
+    <input type="button" value="滑动显示" onclick="slideDown()">
+    <input type="button" value="滑动隐藏" onclick="slideUp()">
+    <input type="button" value="滑动切换" onclick="slideToggle()">
+    <input type="button" value="淡入淡出切换" onclick="fadeToggle()">
+    <div id="showDiv">div123</div>
+    <script>
+
+        function hideFn() {
+            $("#showDiv").hide("fast","swing",function(){
+                alert("隐藏");
+            });
+        }
+
+        function showFn() {
+            $("#showDiv").show(4000,"linear",function(){
+                alert("显示");
+            });
+        }
+
+        function toggleFn() {
+            $("#showDiv").toggle("show","swing",function(){
+                alert("切换");
+            });
+        }
+
+        function slideDown() {
+            $("#showDiv").slideDown(1000,"linear");
+        }
+
+        function slideUp() {
+            $("#showDiv").slideUp(1000,"linear");
+        }
+
+        function slideToggle() {
+            $("#showDiv").slideToggle(1000,"linear");
+        }
+
+        function fadeToggle() {
+            $("#showDiv").fadeToggle(1000,"linear");
+        }
+
+    </script>
+
+</body>
+</html>

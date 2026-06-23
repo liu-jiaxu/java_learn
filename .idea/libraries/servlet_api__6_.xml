@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="servlet-api (6)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Redis_And_Jedis/src/lib/servlet-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

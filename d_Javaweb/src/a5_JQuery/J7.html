@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件绑定</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/jquery-migrate-1.4.1.min.js"></script>
+
+    <style>
+        #d1 {
+            height: 100px;
+            width: 100px;
+            background-color: rebeccapurple;
+        }
+    </style>
+
+</head>
+<body>
+
+    <input id="name" type="text" value="123">
+    <button id="b1">点击</button>
+    <button id="b2">解绑</button>
+    <br>
+    <div id="d1">lalala</div>
+    <button id="b3">切换</button>
+    <script>
+
+        // (1)jguery标准的绑定方式
+            // jq对象.事件方法(回调函数）
+        $(function(){
+            $("#name").val('456');
+            // 链式编程，多个方法写在一起
+            $("#name").mouseover(function(){
+                alert('come');
+            }).mouseout(function(){
+                alert('go');
+            })
+            // 获取焦点
+            $("#name").focus();
+        });
+
+        // (2)on绑定事件/off解除绑定
+            // jq对象.on("事件名称"，回调函数)
+            // jq对象.off("事件名称")
+        $(function(){
+            $("#b1").on("click",function(){
+                alert("点击了");
+            });
+            $("#b2").click(function(){
+                $("#b1").off(); // off中不写方法则解除全部绑定事件
+                alert("解绑了");
+            });
+        });
+
+        // (3)事件切换toggle
+            // jq对象.toggle(fn1,fn2...)，每次点击循环执行传入的function
+            // 1.9版本 .toggle(function, function, … ) 方法删除,jQuery Migrate插件(1.9以下)可以恢复此功能。
+        $(function(){
+            $("#b3").toggle(function(){$("#d1").css("backgroundColor","red");},
+                function(){$("#d1").css("backgroundColor","green");},
+                function(){$("#d1").css("backgroundColor","blue");})
+        });
+
+    </script>
+
+</body>
+</html>

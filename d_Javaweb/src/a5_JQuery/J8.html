@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <!--
+        案例：广告显示
+            需求：
+                1.当页面加载完1s后，自动显示图片
+                2.图片显示3s后自动消失
+            分析
+                1.使用定时器setTimeout
+                2.使用jq动画控制display属性
+                3.使用show和hide方法
+    -->
+    <div>
+        <div id="ad" style="display: none">
+            <img style="width: 50%" src="img/1.jpg" />
+        </div>
+        <div>123456</div>
+    </div>
+    <script>
+
+        $(function(){
+            setTimeout("adshow()",1000);
+            setTimeout("adhide()",4000);
+        });
+        function adshow(){
+            $("#ad").slideDown("2500");
+        }
+        function adhide(){
+            $("#ad").slideUp("2500");
+        }
+
+    </script>
+
+</body>
+</html>

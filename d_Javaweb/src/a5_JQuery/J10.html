@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插件1</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <button id="b1">1</button>
+    <div id="d1" style="height: 100px;width: 100px; background: rebeccapurple">12345</div>
+    <script>
+
+      // 自定义方法
+      $.fn.extend({
+          color:function(color){
+              this.css('background-color',color);
+          },
+          size:function(size){
+              this.css('height',size);
+          }
+      });
+
+      $(function(){
+
+          $("#b1").click(function(){
+              // 使用jq对象.调用
+              $("#d1").color("green");
+              $("#d1").size("200px")
+          });
+
+      });
+
+    </script>
+
+
+    <script>
+
+        // 定义全局方法
+        $.extend({
+
+            max:function(a,b){
+                return a >=b ? a : b;
+            },
+            min:function(a,b){
+              return a >=b ? b : a;
+            },
+
+        });
+
+        // 用$.调用全局方法
+        alert("min"+$.min(4,1));
+        alert("max"+$.max(4,1));
+
+    </script>
+
+</body>
+</html>

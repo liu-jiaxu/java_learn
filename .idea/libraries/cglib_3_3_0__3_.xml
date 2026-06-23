@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="cglib-3.3.0 (3)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/f_DesignPattern/src/a3_StructuralPattern/a1_ProxyPattern/CGLIB_DynamicProxy/lib/cglib-3.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

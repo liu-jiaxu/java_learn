@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入了一个外部X2.dtd的文件，根标签为students
+<!DOCTYPE students SYSTEM "X2.dtd">-->
+
+<!--内部dtd文档的书写规范，不常用-->
+<!DOCTYPE students [
+        <!ELEMENT students (student*) >
+        <!ELEMENT student (name,age,sex)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT age (#PCDATA)>
+        <!ELEMENT sex (#PCDATA)>
+        <!ATTLIST student number ID #REQUIRED>
+        ]>
+
+<students>
+
+    <student number="s001">
+        <name>aaa</name>
+        <age>12</age>
+        <sex>1</sex>
+    </student>
+
+    <student number="s002">
+        <name>aab</name>
+        <age>12</age>
+        <sex>2</sex>
+    </student>
+
+</students>

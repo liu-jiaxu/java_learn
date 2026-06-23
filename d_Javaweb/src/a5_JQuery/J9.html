@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例2</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <!--
+        案例：抽奖
+            分析：
+                1.开始按钮绑定事件
+                    (1)定义循环定时器，切换小相框图片src属性
+                    (2)定义数组存储图片，生成随机数获取数组索引
+                2.结束按钮绑定事件
+                    (1)停止定时器
+                    (2)给大相框设置src属性
+    -->
+    <!--小相框-->
+    <div style="border-style: dotted;width: 160px;height: 200px;">
+        <img id="img1ID" src="img/OIP-C（9）.jpg" style="width: 160px;height: 200px" />
+    </div>
+    <!--大相框-->
+    <div style="border-style: double;width: 550px;height: 700px;position: absolute;left: 500px;top: 10px">
+        <img id="img2ID" src="img/OIP-C（9）.jpg" style="width: 550px;height: 700px" />
+    </div>
+    <!--开始按钮-->
+    <input id="startID" type="button" value="开始" style="margin:20px;width: 150px;height: 150px;font-size: 22px">
+    <!--停止按钮-->
+    <input id="stopID" type="button" value="结束" style="margin:20px;width: 150px;height: 150px;font-size: 22px">
+
+    <script>
+
+        // 数组存储图片
+        var imgs = ["img/OIP-C（1）.jpg",
+                    "img/OIP-C（2）.jpg",
+                    "img/OIP-C（3）.jpg",
+                    "img/OIP-C（4）.jpg",
+                    "img/OIP-C（5）.jpg",
+                    "img/OIP-C（6）.jpg",
+                    "img/OIP-C（7）.jpg",
+                    "img/OIP-C（8）.jpg",
+                    "img/OIP-C（9）.jpg",];
+
+        var startID; // 定义全局变量定时器
+        var index; // 定义数组随机索引
+        $(function(){
+
+            use(false);
+
+            // 1.开始按钮
+            $("#startID").click(function(){
+                use(true);
+                // 定义循环定时器
+                startID = setInterval(function(){
+                    index = Math.floor(Math.random()*10); // 取随机数0-0.99并*10并取整
+                    $("#img1ID").prop("src",imgs[index]);
+                },30);
+            });
+            // 2.结束按钮
+            $("#stopID").click(function(){
+                use(false);
+                // 停止定时器
+                clearInterval(startID);
+                // 大相框设置src
+                $("#img2ID").prop("src",imgs[index]).hide();
+                $("#img2ID").fadeIn(1500);
+                    // 先将更改的图片隐藏，使用淡入淡出显示效果更佳！
+            });
+
+        });
+
+        // 按钮使用优化，进入页面时结束按钮不能用，点击开始后开始按钮不能用，结束后结束按钮不能用
+        function use(can){
+            $("#startID").prop("disabled",can);
+            $("#stopID").prop("disabled",!can);
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+
+    <script>
+
+        // 选择器
+        // (1)事件绑定(示例通过id)
+        // (2)入口函数(js和jq)
+        // 入口函数：代码写到这里时js会优先于html的body执行，所以要设置window.onload=function(){...}让js在body执行后再执行
+        // js写法
+        window.onload=function(){
+            var d1 = document.getElementById("1");
+            d1.innerHTML = "Hello1";
+        };
+        // jq写法
+        $(function(){
+           $("#b1").click(function(){
+               $("#2").html(new Date().getTime());
+           });
+        });
+        // window.onload和$(function(){})的区别
+            // window.onload：只能定义一次，定义多次时，后面的值会将前面的覆盖掉，相当于对象重新赋值
+            // $(function(){})：可以定义多次
+
+        // (3)样式控制
+        $(function (){
+            $("#1,#2").css(
+                "backgroundColor","red" // 此处使用DOM写法，鼠标悬停单词时可以检查是否拼写错误
+            );
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <div id="1">11111</div>
+    <div id="2">22222</div>
+    <input type="button" value="按钮" id="b1">
+
+    <button id="01">11</button>
+    <button id="02">11</button>
+    <button id="03" class="one">11</button>
+    <button id="04" class="two">11</button>
+    <button id="05" class="three">11</button>
+    <button id="06">11</button>
+    <button id="07">11</button>
+
+    <div id="11">111</div>
+    <div id="12">111</div>
+    <div id="13" class="first">111</div>
+    <div id="14" class="second">111</div>
+    <div id="15" class="third">111</div>
+    <span id="16">111</span>
+    <span id="17">111</span>
+    <br><br>
+
+    <script>
+
+        // 1.基本选择器
+        // (1)id选择器：#id
+        $("#01").click(function(){
+            $("#11").css("backgroundColor", "green");
+        });
+        // (2)标签选择器：元素名
+        $("span").css("backgroundColor", "pink");
+        // (3)类选择器：.class(要符合命名规则！)
+        $(".one").click(function(){
+            $(".first").css("backgroundColor", "black");
+        });
+        // (4)*
+        $("*").css("height","44px");
+        // (5)并集选择器：多个元素
+        $("#02").click(function(){
+            $("#12,.second").css("backgroundColor", "orange");
+        });
+
+    </script>
+
+    <div id="21">
+        <span id="31">hhh
+            <span id="41">lalalalala</span>
+        </span>
+        <span id="32">ggg</span>
+    </div>
+    <br><br>
+
+    <script>
+
+        // 2.层级选择器
+        // (1)后代选择器
+        $("div span").css("background","green");
+        $("div span span").css("background","pink");
+        // (2)子选择器：选择父类下的子元素
+        $("div > span").css("margin","20px");
+
+    </script>
+
+    <div title="first">qqqqq</div>
+    <div title="last">aaaaa</div>
+    <div title="test2">qqqbb</div>
+    <div id="51" title="test3">qqqbb</div>
+    <br><br>
+
+    <script>
+
+        // 3.属性选择器
+        // (1)属性名称选择器
+            // 语法: $("A[属性名]")包含指定属性的选择器
+        $("div[title]").css("height","30px");
+        // (2)属性选择器
+            // 语法: $("A[属性名='值"]")包含指定属性等于指定值的选择器
+        $("div[title='first']").css("background","red"); // 选择属性与对应值
+        // $("div[title!='first']").css("background","red"); // 选择属性不等于值
+        $("div[title^='la']").css("background","pink"); // 符合正则表达式规则，^表示开始，&表示结束，*表示包含
+        $("div[title$='st2']").css("background","black");
+        $("div[title*='st2']").css("color","red");
+        // (3)复合属性选择器
+            // 语法: $("A[属性名='值"][]..")包含多个属性条件的选择器
+        $("div[id][title*='st3']").css("color","red");
+
+    </script>
+
+    <p class="one">1</p>
+    <p class="two">2</p>
+    <p class="three">3</p>
+    <p class="four">4</p>
+    <p class="five">5</p>
+    <h3>123</h3>
+    <h5>456</h5>
+    <br><br>
+
+    <script>
+
+        // 4.过滤选择器
+        // (1)首元素选择器
+            // 语法： :first 获得选择的元素中的第一个元素
+        $("p:first").css("color","pink");
+        // (2)尾元素选择器
+            // 语法： :last 获得选择的元素中的最后一个元素
+        $("p:last").css("color","pink");
+        // (3)非元素选择器
+            // 语法： :not(selector) 不包括指定内容的元素
+        $("p:not(.one,.two,.three,.four)").css("height","30px");
+        // (4)偶数选择器
+            // 语法： :even偶数，从0开始计数
+        $("p:even").css("backgroundColor","red");
+        // (5)奇数选择器
+            // 语法： :odd奇数，从0开始计数
+        $("p:odd").css("backgroundColor","green");
+        // (6)等于索引选择器
+            // 语法： :eq(index) 指定索引元素(从0开始)
+        $("p:eq(1)").css("color","blue");
+        // (7)大于索引选择器
+            // 语法： :gt(index) 大于指定索引元素
+        $("p:gt(3)").css("text-align","center");
+        // (8)小于索引选择器
+            // 语法： :lt(index) 小于指定索引元素
+        $("p:lt(3)").css("text-align","end");
+        // (9)标题选择器
+            // 语法： :header 获得标题元素<h1-h6>，固定方法
+        $(":header").css("border-style","ridge");
+
+    </script>
+
+    <div>
+
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">姓名</label>
+                <input type="text" name="name" class="form-control" id="exampleInputName2" >
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputName3">籍贯</label>
+                <input type="text" name="address" class="form-control" id="exampleInputName3" >
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail2">邮箱</label>
+                <input type="text" name="email" class="form-control" id="exampleInputEmail2" disabled="disabled" >
+            </div>
+
+            <td>
+                <from action="index.js" method="post">
+                    <input class="d" type="checkbox" name="复选框" value="1" />1
+                    <input class="d" type="checkbox" name="复选框" value="2" />2
+                    <input class="d" type="checkbox" name="复选框" value="3" />3
+                    <input class="d" type="checkbox" name="复选框" value="4" />4
+                </from>
+            </td>
+
+            <td>
+                <select naem="下拉选择框" size="5" multiple="multiple">
+                    <option selected="selected">选择</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </td>
+
+        </form>
+        <button class="btn1">按钮1</button>
+        <button class="btn2">按钮2</button>
+        <button class="btn3">按钮3</button>
+        <button class="btn4">按钮4</button>
+
+    </div>
+
+    <script>
+
+        // 5.表单过滤选择器
+        // (1)可用元素选择器
+            // 语法： :enabled获得可用元素(input设置disable属性为disable时为不可使用，未设置时为enable可使用)
+        $(".btn1").click(function(){
+            $("input:enabled").val("ppp"); // 将可使用的input中的文字设置为对应值ppp
+        });
+        // (2)不可用元素选择器
+            // 语法： :disabled 获得不可用元素
+        $(".btn2").click(function(){
+            $("input:disabled").val("qqq"); // 将不可使用的input中的文字设置为对应值qqq
+        });
+        // (3)选中选择器
+            // 语法： :checked 获得单选/复选框选中的元素
+        $(".btn3").click(function(){
+            alert($("input[type='checkbox']:checked").length); // 当选中复选框元素时，点击按钮会弹出提示选中的个数
+        });
+        // (4)选中选择器
+            // 语法： :selected 获得下拉框选中的元素
+        $(".btn4").click(function(){
+            alert($("option:selected").length); // 当选中下拉列表元素时，点击按钮会弹出提示选中的个数
+        });
+
+    </script>
+
+</body>
+</html>

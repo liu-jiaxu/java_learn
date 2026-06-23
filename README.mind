@@ -1,0 +1,17 @@
+重点
+一，a_Java_Basics
+1.基础
+（1）数据类型
+    byte short int long float double char boolean
+（2）随机数
+    //例：获取一个10-99范围的随机整数
+    int i1 = (int) (Math.random() * 90 + 10); //注意数据类型转换
+    System.out.println("i1:" + i1);
+    //例：获取一个[START,END]范围的随机整数
+    int START = 33, END = 100;
+    Random random = new Random();
+    int number = random.nextInt(END - START + 1) + START;
+（3）lable标签
+    lable: for (int i = 2; i <= 100000; i++)
+    continue lable
+(4)

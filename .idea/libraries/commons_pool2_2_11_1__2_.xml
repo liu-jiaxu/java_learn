@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="commons-pool2-2.11.1 (2)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Redis_And_Jedis/lib/commons-pool2-2.11.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Redis_And_Jedis/lib/jedis-4.4.0-m2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Redis_And_Jedis/lib/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Redis_And_Jedis/lib/slf4j-log4j12-1.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

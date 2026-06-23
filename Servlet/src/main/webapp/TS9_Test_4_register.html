@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+
+    <script>
+
+      /**
+       * 分析：点击超链接或者图片，需要换一张
+       *   1.给超链接和图片绑定单击时间
+       *   2.重新设置图片的src属性值
+       */
+      window.onload = function() {
+          // 1.获取图片对象
+          var img = document.getElementById("checkCode");
+          img.onclick = function() {
+              // 加时间戳
+              var date = new Date().getTime();
+              img.src="/ts94?"+date; // 给浏览器随机资源
+          }
+          // 2.获取文字对象
+          var text = document.getElementById("change");
+          text.onclick = function() {
+              // 加时间戳
+              var date = new Date().getTime();
+              text.src="/ts94?"+date; // 给浏览器随机资源
+          }
+      }
+
+    </script>
+
+</head>
+<body>
+
+    <img id="checkCode" src="/ts94" />
+    <a id="change" href="TS9_Test_4_register.html">看不清，换一张</a>
+
+</body>
+</html>

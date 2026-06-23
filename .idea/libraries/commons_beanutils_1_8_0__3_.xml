@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="commons-beanutils-1.8.0 (3)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/WEB-INF/lib/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/WEB-INF/lib/druid-1.1.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/WEB-INF/lib/mysql-connector-java-8.0.27-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/CookieSession_And_JSP/src/main/webapp/WEB-INF/lib/spring-beans-5.0.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

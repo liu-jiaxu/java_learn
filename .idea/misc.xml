@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/AJAX_And_JSON" />
+    <file type="web" url="file://$PROJECT_DIR$/CookieSession_And_JSP" />
+    <file type="web" url="file://$PROJECT_DIR$/CookieSession_And_JSP_Test" />
+    <file type="web" url="file://$PROJECT_DIR$/FilterListener" />
+    <file type="web" url="file://$PROJECT_DIR$/h_SSM" />
+    <file type="web" url="file://$PROJECT_DIR$/i_SpringBoot2" />
+    <file type="web" url="file://$PROJECT_DIR$/Redis_And_Jedis" />
+    <file type="web" url="file://$PROJECT_DIR$/Servlet" />
+    <file type="web" url="file://$PROJECT_DIR$/Servlet_Learn" />
+    <file type="web" url="file://$PROJECT_DIR$/Tomcat" />
+    <file type="web" url="file://$PROJECT_DIR$/Tomcat_IDEA" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/CookieSession_And_JSP/pom.xml" />
+        <option value="$PROJECT_DIR$/CookieSession_And_JSP_Test/pom.xml" />
+        <option value="$PROJECT_DIR$/FilterListener/pom.xml" />
+        <option value="$PROJECT_DIR$/Servlet/pom.xml" />
+        <option value="$PROJECT_DIR$/AJAX_And_JSON/pom.xml" />
+        <option value="$PROJECT_DIR$/Redis_And_Jedis/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

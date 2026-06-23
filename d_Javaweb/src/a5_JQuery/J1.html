@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+    <div id="d1">111</div>
+    <div id="d2">222</div>
+    <p class="d3">333</p>
+    <p class="d4">444</p>
+
+<script>
+
+    // 1.使用jquery获取元素对象
+    /*var div1 = $("#d1");
+    alert(div1.html());
+    var div2 = $("#d2");
+    alert(div2.html());*/
+
+
+
+    // 2.JQuery对象和JS对象区别及转换
+    // js方法获取所有div标签
+    var divs = document.getElementsByTagName("div");
+    // jq方法获取所有div标签
+    var $divs = $("div");
+    alert(divs+" "+$divs+" "+divs.length+" "+$divs.length);
+
+    // 让div中每个元素值都变为aaa
+    // js操作
+    for (var i = 0; i < divs.length; i++) {
+        divs[i].innerHTML = "aaa";
+    }
+    // jq操作(更方便，但两者不通用)
+    $divs.html("bbb");
+
+    // 两者转换
+    // jq -> js：jq对象[索引] 或 jq对象.get(索引) 注：加索引代表转换单个，不加索引代表全部转换！
+    // js -> jq：$(js对象)
+    var div3 = document.getElementsByClassName("d3");
+    var $div4 = $(".d4");
+    // 转换
+    var $div3 = $(div3); // js -> jq
+    var div4 = $div4; // jq -> js
+    $div3.html("ccc");
+    div4[0].innerHTML = "ddd";
+
+</script>
+
+</body>
+</html>

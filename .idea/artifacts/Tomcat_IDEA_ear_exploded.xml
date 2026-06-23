@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="Tomcat_IDEA:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/Tomcat_IDEA_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="Tomcat_IDEA/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

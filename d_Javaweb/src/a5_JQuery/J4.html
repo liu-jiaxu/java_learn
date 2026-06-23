@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+    <script src="js/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+
+    <!--CRUD-->
+    <input type="button" value="将反恐放置到city的后面" id="b1"/>
+    <input type="button" value="将反恐放置到city的最前面" id="b2"/>
+    <input type="button" value="将反恐插入到天津后面" id="b3"/>
+    <input type="button" value="将反恐插入到天津前面" id="b4"/>
+    <input type="button" value="删除北京" id="b5"/>
+    <input type="button" value="删除div所有子节点" id="b6"/>
+
+    <ul id="city">
+        <li id="tj" name="tianjin">天津</li>
+        <li id="bj" name="beijing">北京</li>
+        <li id="cq" name="chongqing">重庆</li>
+    </ul>
+
+    <ul id="love">
+        <li id="fk" name="fankong">反恐</li>
+        <li id="xj" name="xingji">星际</li>
+    </ul>
+
+    <div id="foo1">我是div<p><a href="#">aaa</a></p></div>
+
+    <script>
+
+        $(function(){
+
+            // 1.将反恐放置到city的后面
+            $("#b1").click(function(){
+                $("#city").append($("#fk"));
+            });
+            // 2.将反恐放置到city的最前面
+            $("#b2").click(function(){
+                $("#city").prepend($("#fk"));
+            });
+            // 3.将反恐插入到天津后面
+            $("#b3").click(function(){
+                $("#tj").after($("#fk"));
+            });
+            // 4.将反恐插入到天津前面
+            $("#b4").click(function(){
+                $("#tj").before($("#fk"));
+            });
+            // 5.删除北京
+            $("#b5").click(function(){
+                $("#bj").remove();
+            });
+            // 6.删除div所有子节点
+            $("#b6").click(function(){
+                $("#foo1").empty();
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

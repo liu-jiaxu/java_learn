@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<!--<?xml-stylesheet type="text/css" href="X1.css" ?>-->
+
+<users>
+
+    <user id='1'>
+        <name>zhangsan</name>
+        <age>23</age>
+        <gender>male</gender>
+    </user>
+
+    <user id='2'>
+        <name>lisi</name>
+        <age>24</age>
+        <gender>female</gender>
+    </user>
+
+    <code>
+        <!-- if(a > b && a < b){} 这样写报错 -->
+        <!--更改-->
+            if(a &lt; b &amp;&amp; a &gt; b){}
+
+        <!--原样输出-->
+            <![CDATA[
+                if(a > b && a < b){}
+            ]]>
+    </code>
+
+</users>
