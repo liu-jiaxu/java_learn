@@ -1,4 +1,0 @@
-1782227612460 | bridge_initialized
-1782227614679 | command=debugProbe raw=debugProbe message=shim_ready
-1782227614681 | command=loaded raw=loaded
-1782227614917 | command=loaded raw=loaded
