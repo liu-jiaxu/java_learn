@@ -1,8 +1,8 @@
-package Maven;
+package maven;
 
 /**
  * ClassName: maven
- * Package: Maven
+ * Package: maven
  * Description:Maven介绍
  *
  * @Author: zgh296

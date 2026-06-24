@@ -15,7 +15,7 @@ public class M1 {
 
       以下是Maven3.6.0的简要学习，具体学习见模块g_Git_And_Maven
 
-      一.Maven
+      一.maven
           1.介绍
               Maven是一个项目管理工具，它包含一个项目对象模型(pom：project object model)，一组标准集合，一个项目
           生命周期(project lifecycle)，一个依赖管理系统，和用来运行定义在生命周期阶段中插件目标的逻辑
@@ -40,7 +40,7 @@ public class M1 {
       	                <url>http://maven.aliyun.com/nexus/content/groups/public</url>
       	           </mirror>
       	           [2]配置settings.xml文件中的<localRepository>，配置本地仓库路径
-      	           <localRepository>D:/SoftwareInstallation/Maven/RepMaven </localRepository>
+      	           <localRepository>D:/SoftwareInstallation/maven/RepMaven </localRepository>
           5.Maven项目目录
               -- 根目录
                   -- src(源码)
@@ -66,7 +66,7 @@ public class M1 {
 
       二.idea中开发Maven项目(见项目Maven及Maven_Skeleton)
           1.配置：
-              设置 -> 构建、执行、部署 -> 构建工具 -> Maven -> 修改三个路径
+              设置 -> 构建、执行、部署 -> 构建工具 -> maven -> 修改三个路径
           2.Maven坐标
               坐标：被Maven管理的资源(jar包、插件)的唯一标识，pom.xml文件中配置，在创建时的高级设置中可以设置
                    由三部分构成：

@@ -1,20 +1,20 @@
-package Git;
+package git;
 
 /**
  * ClassName: git
- * Package: Git
+ * Package: git
  * Description: Git介绍
  *
  * @Author: zgh296
  * @Create: 2023/7/4 - 16:14
  * @Version: v1.0
  */
-public class git {
+public class Git {
 
     /*
     1.查看文件内容：
         (1)依据GitHub客户端找到40位版本号，在.git/object文件夹中依照前两位找到对应文件夹，后38位为文件名
-        (2)在当前仓库文件目录下右键 -> Git Bash Here
+        (2)在当前仓库文件目录下右键 -> git Bash Here
         (3)输入命令 git cat-file -p 40位版本号，该命令会显示文件提交信息，该信息中包含另外一个版本号
         (4)继续输入命令 git cat-file -p 上一步得到的40位版本号，该命令会显示文件状态信息(权限等)，仍会得到一个版本号
         (5)继续输入命令 git cat-file -p 上一步得到的40位版本号，最终该命令会查看到文件内容
@@ -41,64 +41,64 @@ public class git {
 
     3.命令指定文件夹创建仓库
         (1)新建仓库
-            [1]在指定文件目录下右键 -> Git Bash Here
+            [1]在指定文件目录下右键 -> git Bash Here
             [2]输入指令 git init -> 初始化完成，得到.git文件
             [3]指令创建的仓库不会提交任何文件，因此object和head文件为空，而客户端创建仓库会自动执行一次提交，
         提交文件.gitattributes，而且客户端可以指定创建README文件
         (2)克隆远程仓库
-            [1]在指定文件目录下右键 -> Git Bash Here
+            [1]在指定文件目录下右键 -> git Bash Here
             [2]输入指令 git clone 远程仓库网址 -> 得到远程仓库
                        git clone 远程仓库网址 新的仓库名 -> 得到新命名的相同远程仓库
 
     4.配置仓库用户名和邮箱
-        (1)配置本地(单一)仓库 -> 相当于客户端Repository -> Repository Settings -> Git config中设置
-            [1]在当前仓库文件目录下右键 -> Git Bash Here
+        (1)配置本地(单一)仓库 -> 相当于客户端Repository -> Repository Settings -> git config中设置
+            [1]在当前仓库文件目录下右键 -> git Bash Here
             [2]输入指令 git config user.name 用户名 -> 配置用户名
                        git config user.email 邮箱 -> 配置邮箱
             [3]该配置会保存在对应仓库目录下的config文件中，直接修改文件也可
         (2)配置全局(所有)仓库 -> 相当于在客户端option中设置
-            [1]在任意仓库文件目录下右键 -> Git Bash Here
+            [1]在任意仓库文件目录下右键 -> git Bash Here
             [2]输入指令 git config --global user.name 用户名 -> 配置全局用户名
                        git config --global user.email 邮箱 -> 配置全局邮箱
             [3]该配置会保存在C盘用户目录下的.gitconfig文件中，直接修改文件也可
 
     5.文件操作
         (1)查看仓库状态 -> 查看仓库暂存区 -> 这些状态就是客户端提示的信息(文件增删改后没有提交的信息)
-            [1]在当前仓库文件目录下右键 -> Git Bash Here
+            [1]在当前仓库文件目录下右键 -> git Bash Here
             [2]输入指令 git status -> 得到分支、未处理文件(增删改后未提交的文件)
         (2)工作区域删除文件a.txt并提交到存储区域 -> 相当于在仓库删除文件a.txt，用命令commit提交
-            [1]在当前仓库文件目录下右键 -> Git Bash Here
+            [1]在当前仓库文件目录下右键 -> git Bash Here
             [2]输入指令 git rm --cached a.txt -> 将a.txt文件从工作区域删除，并将操作提交到暂存区域
                        git rm --cached *.txt -> 将所有txt文件从工作区域删除，并将操作提交到暂存区域
             [3]输入指令 git commit -m 提示信息 -> 将上述操作提交，真正将文件删除，并将该操作更改至存储区域
         (存储区域不会删除原文件，只是改变暂存区对原文件的指向，不再让暂存区指针指向原文件，访问不到了！)
         (3)工作区域文件a.txt新增到存储区域 -> 相当于在仓库创建新文件a.txt，用指令commit提交
-            [1]在当前仓库文件目录下右键 -> Git Bash Here
+            [1]在当前仓库文件目录下右键 -> git Bash Here
             [2]输入指令 git add a.txt -> 将a.txt文件存储到存储区域
                        git add *.txt -> 将所有txt文件存储到存储区域
             [3]输入指令 git commit -m 提示信息(提交文件) -> 将上述操作提交，真正将文件存储到存储区域，并设置
         提交信息为“提交文件”
         (4)查看文件历史操作信息 -> 相当于在客户端History中查看
-            [1]在当前仓库文件目录下右键 -> Git Bash Here
+            [1]在当前仓库文件目录下右键 -> git Bash Here
             [2]输入指令  git log --oneline -> 即可查看历史文件操作信息
         (5)误删除操作的恢复 -> 相当于删除工作区域文件，从存储区域恢复或还原到之前的提交记录
             [1]存储区域保存了删除的文件
-                {1}在当前仓库文件目录下右键 -> Git Bash Here
+                {1}在当前仓库文件目录下右键 -> git Bash Here
                 {2}输入指令 git restore a.txt -> 将a.txt从存储区域恢复至工作区域
             [2]存储区域没有保存删除的文件
                 {1}直接恢复至最初提交删除之前，在此期间进行的其它commit也一并回滚
-                    <1>在当前仓库文件目录下右键 -> Git Bash Here
+                    <1>在当前仓库文件目录下右键 -> git Bash Here
                     <2>输入指令 git log --oneline -> 查看删除操作的版本号(7位)
                     <3>输入指令 git reset --hard 删除操作的版本号 -> 回滚所有操作至删除文件之前
                 {2}仅还原删除文件，不影响其它提交的操作
-                    <1>在当前仓库文件目录下右键 -> Git Bash Here
+                    <1>在当前仓库文件目录下右键 -> git Bash Here
                     <2>输入指令 git log --oneline -> 查看删除操作下一步的版本号(7位)
                         例：删除操作下一步进行了commit提交，则获取提交的版本号
                     <3>输入指令 git revert 版本号 -> 还原到该操作之前
 
     6.分支操作
         (1)创建分支、查看分支、切换当前分支、删除分支
-            [1]在当前仓库文件目录下右键 -> Git Bash Here
+            [1]在当前仓库文件目录下右键 -> git Bash Here
             [2]创建分支：必须在有提交操作的仓库中才能创建，因为分支都是基于提交操作的！
                 输入指令 git branch 分支名
             [3]查看分支
@@ -110,14 +110,14 @@ public class git {
             [6]删除分支
                 输入指令 git branch -d 分支名 -> 删除指定分支
         (2)合并分支
-            [1]在当前仓库文件目录下右键 -> Git Bash Here
+            [1]在当前仓库文件目录下右键 -> git Bash Here
             [2]合并分支
                 输入指令 git merge 分支名(user) -> 以当前分支为主分支，将指定分支user合并到当前分支
             [3]合并分支后存在重复文件内容：命令窗口提示
                 手动打开对应文件进行修改，之后进行add和commit操作即可解决合并提示文件冲突问题
 
     7.标签操作(注：所有标签不能重复！)
-        [1]在当前仓库文件目录下右键 -> Git Bash Here
+        [1]在当前仓库文件目录下右键 -> git Bash Here
         [2]若仓库无提交操作，则任意进行一次提交操作
         [3]为commit创建标签
             {1}输入指令 git log -> 查看当前仓库所有commit操作的版本号(40位)
@@ -137,7 +137,7 @@ public class git {
                 url = https://github.com/zgh296/remote.git
                 fetch = +refs/heads/*:refs/remotes/origin/*
         (1)远程仓库操作
-            [1]在当前文件目录下右键 -> Git Bash Here
+            [1]在当前文件目录下右键 -> git Bash Here
             [2]关联远程仓库
                 输入指令 git remote add origin 远程仓库网址
             [3]删除远程仓库
@@ -145,7 +145,7 @@ public class git {
             [4]重命名远程仓库
                 输入指令 git remote rename 新名称 -> 默认名称origin
         (2)gitee远程仓库文件操作
-            [1]在当前远程仓库文件目录下右键 -> Git Bash Here
+            [1]在当前远程仓库文件目录下右键 -> git Bash Here
             [2]本地远程仓库新增文件
                 {1}在工作区域新增文件
                 {2}git add 文件 -> 将文件提交到暂存区域
@@ -157,12 +157,12 @@ public class git {
                 {6}刷新远程仓库，即可得到新增的文件
         (3)远程仓库修改文件提交到本地仓库
             [1]远程仓库修改文件内容
-            [2]在当前远程仓库文件目录下右键 -> Git Bash Here
+            [2]在当前远程仓库文件目录下右键 -> git Bash Here
             [3]git pull origin(或修改后的名称) -> 完成文件拉取操作(需要和上一步一样配置密钥)
      */
 
     /*
-    Git 常用命令参考手册（直接看md文档）
+    git 常用命令参考手册（直接看md文档）
     ====================
 
     1. 初始化和配置
@@ -476,14 +476,14 @@ public class git {
     git bisect start
     git bisect bad                    # 标记当前版本有问题
     git bisect good <commit-id>       # 标记已知正常的版本
-    # ... Git 会自动切换提交，测试后标记 good/bad ...
+    # ... git 会自动切换提交，测试后标记 good/bad ...
     git bisect reset                  # 结束二分查找
 
     # 生成 .gitignore 文件模板
     # 常见内容：
     # *.class        — 编译文件
     # *.log          — 日志文件
-    # target/        — Maven 构建目录
+    # target/        — maven 构建目录
     # .idea/         — IDEA 配置目录
     # *.iml          — IDEA 模块文件
 
@@ -500,7 +500,7 @@ public class git {
 
     14. 通用帮助命令
     -------------------
-    # 查看 Git 所有命令
+    # 查看 git 所有命令
     git help
     git --help
 

@@ -1,4 +1,4 @@
-# Git 常用命令参考手册
+# git 常用命令参考手册
 
 ---
 
@@ -223,10 +223,10 @@ git push --force-with-lease
 git rebase -i HEAD~3                        # 对最近3次提交进行操作
 ```
 
-| 方式 | 优点 | 缺点 |
-|------|------|------|
-| **Merge** | 保留完整历史，操作安全 | 分支图杂乱 |
-| **Rebase** | 提交历史线性整洁 | 需强制推送，协作时风险大 |
+| 方式         | 优点          | 缺点           |
+|------------|-------------|--------------|
+| **Merge**  | 保留完整历史，操作安全 | 分支图杂乱        |
+| **Rebase** | 提交历史线性整洁    | 需强制推送，协作时风险大 |
 
 ---
 
@@ -368,7 +368,7 @@ git clean -fd                               # 执行删除
 git bisect start
 git bisect bad                              # 标记当前版本有问题
 git bisect good <commit-id>                 # 标记已知正常的版本
-# Git 会自动切换提交，测试后标记 good/bad ...
+# git 会自动切换提交，测试后标记 good/bad ...
 git bisect reset                            # 结束二分查找
 ```
 
@@ -377,7 +377,7 @@ git bisect reset                            # 结束二分查找
 ```gitignore
 *.class                 # 编译文件
 *.log                   # 日志文件
-target/                 # Maven 构建目录
+target/                 # maven 构建目录
 .idea/                  # IDEA 配置目录
 *.iml                   # IDEA 模块文件
 ```
@@ -403,7 +403,7 @@ git pull                                    # 再次尝试拉取
 ## 14. 通用帮助命令
 
 ```bash
-# 查看 Git 所有命令
+# 查看 git 所有命令
 git help
 git --help
 
