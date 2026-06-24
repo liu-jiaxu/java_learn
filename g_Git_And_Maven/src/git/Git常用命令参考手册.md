@@ -274,6 +274,15 @@ git cherry-pick <commit-A>..<commit-B>
 git push origin <分支名>
 ```
 
+### Cherry-pick 后如何取消
+
+| 当前状态 | 撤销命令 | 效果 |
+|----------|----------|------|
+| 冲突中，未完成 cherry-pick | `git cherry-pick --abort` | 放弃本次 cherry-pick，回到执行前状态 |
+| 已完成 cherry-pick（已提交，未 push） | `git reset --soft HEAD~1` | 撤销提交，保留修改在工作区 |
+| | `git reset --hard HEAD~1` | 彻底撤销，丢弃所有修改 |
+| 已完成 cherry-pick 且已 push | `git revert <commit-hash>` + `git push` | 安全撤销（推荐） |
+
 ---
 
 ## 8. Stash（暂存工作区）
@@ -382,7 +391,7 @@ git checkout -b <新分支名> <commit-id>       # 根据 reflog 中的 commit-i
 
 ---
 
-## 11. 工作树（worktree）
+## 11. 工作树（Worktree）
 
 > 在同一仓库下同时开发多个分支，无需来回切换。
 
