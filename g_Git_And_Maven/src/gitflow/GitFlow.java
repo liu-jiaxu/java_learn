@@ -41,6 +41,15 @@ public class GitFlow {
     git stash apply	            恢复最新的搁置，但保留记录
     git stash drop	            删除最新的搁置记录
     git stash clear	            清空所有搁置记录
+
+    4.fetch与pull的区别
+    git fetch 从远程拉取最新代码，但是不会修改本地代码，只会预览
+    git pull 远程拉取代码
+
+    5.merge & rebase
+    merge保留全部历史记录
+    rebase只会有主线记录
+    git pull --rebase
      */
 
 }
