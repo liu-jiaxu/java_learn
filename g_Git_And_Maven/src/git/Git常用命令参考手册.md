@@ -274,37 +274,18 @@ git cherry-pick <commit-A>..<commit-B>
 git push origin <分支名>
 ```
 
----
+### Cherry-pick 后如何取消
 
-## 8. Stash（暂存工作区）
-
-```bash
-# 暂存当前工作区修改
-git stash
-git stash push -m "暂存说明"                 # 暂存时添加说明
-
-# 查看暂存列表
-git stash list
-
-# 恢复最近一次暂存（不删除 stash 记录）
-git stash apply
-
-# 恢复最近一次暂存（恢复后删除 stash 记录）
-git stash pop
-
-# 恢复指定暂存
-git stash pop stash@{1}
-
-# 删除最近一次暂存
-git stash drop
-
-# 清空所有暂存
-git stash clear
-```
+| 当前状态 | 撤销命令 | 效果 |
+|----------|----------|------|
+| 冲突中，未完成 cherry-pick | `git cherry-pick --abort` | 放弃本次 cherry-pick，回到执行前状态 |
+| 已完成 cherry-pick（已提交，未 push） | `git reset --soft HEAD~1` | 撤销提交，保留修改在工作区 |
+| | `git reset --hard HEAD~1` | 彻底撤销，丢弃所有修改 |
+| 已完成 cherry-pick 且已 push | `git revert <commit-hash>` + `git push` | 安全撤销（推荐） |
 
 ---
 
-## 9. Tag（标签管理）
+## 8. Tag（标签管理）
 
 > Tag 基于某个具体提交（commit）创建，而非基于分支。
 >
@@ -340,7 +321,7 @@ git checkout -b <新分支名> <标签名>
 
 ---
 
-## 10. 撤销与回滚
+## 9. 撤销与回滚
 
 ### 撤销场景速查
 
@@ -382,22 +363,155 @@ git checkout -b <新分支名> <commit-id>       # 根据 reflog 中的 commit-i
 
 ---
 
-## 11. 工作树（worktree）
-
-> 在同一仓库下同时开发多个分支，无需来回切换。
+## 10. Stash（暂存工作区）
 
 ```bash
-# 创建新的工作树
-git worktree add <路径> <分支名>
+# 暂存当前工作区修改
+git stash
+git stash push -m "暂存说明"                 # 暂存时添加说明
 
-# 查看所有工作树
+# 查看暂存列表
+git stash list
+
+# 恢复最近一次暂存（不删除 stash 记录）
+git stash apply
+
+# 恢复最近一次暂存（恢复后删除 stash 记录）
+git stash pop
+
+# 恢复指定暂存
+git stash pop stash@{1}
+
+# 删除最近一次暂存
+git stash drop
+
+# 清空所有暂存
+git stash clear
+```
+
+---
+
+## 11. 工作树（Worktree）
+
+> 在同一仓库下同时开发多个分支，无需来回切换，相当于升级版的Stash。
+
+### 一、创建相关
+
+```bash
+# 基于现有分支创建
+git worktree add <路径> <分支名>
+# 示例：基于 develop 分支创建
+git worktree add ../Java_Backend-develop develop
+
+# 创建新分支并检出
+git worktree add -b <新分支名> <路径> <起始分支>
+# 示例：基于 master 创建 feature 分支
+git worktree add -b feature/payment ../Java_Backend-payment master
+
+# 基于远程分支创建本地分支
+git worktree add -b <本地分支名> <路径> origin/<远程分支名>
+# 示例：基于 origin/develop 创建本地 develop
+git worktree add -b develop ../Java_Backend-develop origin/develop
+
+# 基于特定 commit 创建（detached HEAD）
+git worktree add <路径> <commit-hash>
+# 示例：基于某个历史提交
+git worktree add ../Java_Backend-old abc1234
+```
+
+### 二、查看相关
+
+```bash
+# 列出所有工作树
 git worktree list
 
-# 删除工作树
-git worktree remove <路径>
+# 详细查看（包含状态）
+git worktree list --verbose
 
-# 修剪已删除的工作树引用
+# 查看每个工作树的详细状态
+git worktree list --porcelain
+
+# 查看当前工作树信息
+git worktree list | grep $(pwd)
+```
+
+### 三、删除相关
+
+```bash
+# 安全删除指定工作树
+git worktree remove <路径>
+# 示例
+git worktree remove ../Java_Backend-develop
+
+# 强制移除（即使有修改）
+git worktree remove --force ../Java_Backend-develop
+```
+
+### 四、锁定/解锁
+
+```bash
+# 锁定（被锁定的 worktree 不会被 prune 删除）
+git worktree lock <路径>
+git worktree lock --reason "正在开发重要功能" <路径>
+
+# 解锁
+git worktree unlock <路径>
+```
+
+### 五、移动/重命名
+
+```bash
+# 移动工作树到新位置
+git worktree move <旧路径> <新路径>
+# 示例：重命名目录
+git worktree move ../Java_Backend-develop ../Java_Backend-dev
+# 示例：移动位置
+git worktree move D:/old/path D:/new/path
+```
+
+### 六、修复相关
+
+```bash
+# 修复损坏的工作树（.git 链接丢失等）
+git worktree repair <路径>
+
+# 修复所有工作树
+git worktree repair
+```
+
+### 七、高级用法
+
+```bash
+# 使用相对路径创建
+git worktree add ../branch-name branch-name
+git worktree add ./worktrees/feature feature  # 在子目录创建
+
+# 子模块中使用 worktree
+cd submodule-path
+git worktree add ../submodule-worktree branch-name
+
+# 强制操作（即使分支已存在于其他 worktree）
+git worktree add --force ../path branch-name
+git worktree remove --force ../path
+```
+
+### 八、常见问题处理
+
+```bash
+# 清理孤立的 worktree 记录
 git worktree prune
+git worktree prune --verbose                  # 详细显示删除过程
+git worktree prune --expire 1.day.ago         # 清理过期记录（默认 3 个月）
+
+# 处理 "already checked out" 错误
+# 解决方案1：删除不需要的 worktree
+git worktree remove ../other-path
+# 解决方案2：强制在其他位置检出
+git worktree add --force ../new-path branch-name
+# 解决方案3：在另一个 worktree 中先切走分支
+cd ../other-worktree
+git checkout other-branch
+# 然后回到原目录重新创建
 ```
 
 ---
