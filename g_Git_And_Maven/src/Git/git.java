@@ -162,86 +162,353 @@ public class git {
      */
 
     /*
-    完整工作流程命令
-        1. 初始化和配置
-        bash
-        # 初始化新仓库
-        git init
+    Git 常用命令参考手册（直接看md文档）
+    ====================
 
-        # 克隆现有远程仓库
-        git clone <远程仓库地址>
-        cd <项目目录>
+    1. 初始化和配置
+    -------------------
+    # 初始化新仓库
+    git init
 
-        # 配置用户信息（首次使用）
-        git config --global user.name "你的用户名"
-        git config --global user.email "你的邮箱@example.com"
-        2. 分支管理
-        bash
-        # 查看所有分支
-        git branch -a
+    # 克隆远程仓库
+    git clone <远程仓库地址>
+    cd <项目目录>
 
-        # 创建新分支
-        git branch <分支名>
+    # 配置用户信息（首次使用）
+    git config --global user.name "你的用户名"
+    git config --global user.email "你的邮箱@example.com"
 
-        # 切换到分支
-        git checkout <分支名>
+    # 解决 Windows 文件名过长问题
+    git config --global core.longpaths true
 
-        # 创建并切换到新分支（合并上面两步）
-        git checkout -b <分支名>
 
-        # 基于远程分支创建本地分支
-        git checkout -b <本地分支名> origin/<远程分支名>
-        3. 工作区操作
-        bash
-        # 查看文件状态
-        git status
+    2. 分支管理
+    -------------------
+    # 查看所有分支（本地 + 远程）
+    git branch -a
 
-        # 查看文件变更详情
-        git diff
-        git diff <文件名>  # 查看特定文件
+    # 查看远程分支
+    git branch -r
 
-        # 添加文件到暂存区
-        git add <文件名>  # 添加单个文件
-        git add .        # 添加所有变更
-        git add -A       # 添加所有变更（包括删除）
+    # 创建新分支
+    git branch <分支名>
 
-        # 提交到本地仓库
-        git commit -m "提交说明"
-        git commit -am "提交说明"  # 跳过git add，直接提交已跟踪的文件
-        4. 同步远程仓库
-        bash
-        # 拉取远程最新代码（不合并）
-        git fetch
+    # 切换分支
+    git checkout <分支名>
+    # 新版写法
+    git switch <分支名>
 
-        # 拉取并合并远程代码
-        git pull
+    # 创建并切换到新分支
+    git checkout -b <分支名>
+    # 新版写法
+    git switch -c <分支名>
 
-        # 拉取指定分支
-        git pull origin <分支名>
+    # 基于远程分支创建本地分支
+    git checkout -b <本地分支名> origin/<远程分支名>
 
-        # 推送到远程仓库
-        git push origin <分支名>
+    # 将当前本地分支与远程分支建立追踪关系
+    git branch --set-upstream-to=origin/<远程分支名>
 
-        # 首次推送并设置上游分支
-        git push -u origin <分支名>
+    # 查看本地分支与远程分支的追踪关系
+    git branch -vv
 
-        # 强制推送（谨慎使用）
-        git push -f origin <分支名>
-     */
+    # 重命名本地分支（直接方式）
+    git branch -m <旧分支名> <新分支名>
 
-    /*
-     通用帮助命令
-        bash
-        # 查看 Git 所有命令
-        git help
+    # 重命名分支（保留旧分支为备份）
+    git checkout -b <新分支名> <旧分支名>   # 基于旧分支创建新分支
+    git branch <旧分支名>.bak              # 给旧分支打备份标签
+    git push origin <新分支名>             # 推送新分支
+    git push origin :<旧分支名>            # 删除远程旧分支
 
-        # 或者
-        git --help
+    # 删除本地分支（安全删除，需已合并）
+    git branch -d <分支名>
 
-        # 查看特定命令的帮助
-        git help <命令名>
-        git <命令名> --help
-        git <命令名> -h        # 简洁版帮助
+    # 强制删除本地分支（未合并也可删除）
+    git branch -D <分支名>
+
+    # 删除远程分支
+    git push origin --delete <分支名>
+
+
+    3. 工作区操作
+    -------------------
+    # 查看文件状态
+    git status
+
+    # 查看文件变更详情（工作区 vs 暂存区）
+    git diff
+
+    # 查看特定文件变更
+    git diff <文件名>
+
+    # 查看已暂存的变更（暂存区 vs 最新提交）
+    git diff --staged
+
+    # 添加文件到暂存区
+    git add <文件名>       # 添加单个文件
+    git add .              # 添加所有变更（包括新增和修改，不包括删除）
+    git add -A             # 添加所有变更（包括新增、修改和删除）
+
+    # 撤销工作区文件的修改（恢复到最后一次 git add/commit 的状态）
+    git restore <文件名>
+    # 旧版写法
+    git checkout -- <文件名>
+
+    # 取消暂存（从暂存区移出，保留工作区修改）
+    git restore --staged <文件名>
+    # 旧版写法
+    git reset HEAD <文件名>
+
+    # 提交到本地仓库
+    git commit -m "提交说明"
+    git commit -am "提交说明"    # 跳过 git add，直接提交所有已跟踪文件的变更
+
+    # 修改最后一次提交（追加变更或修改提交信息）
+    git commit --amend -m "新的提交说明"
+    # 仅修改提交信息，不追加变更
+    git commit --amend --no-edit
+
+
+    4. 远程仓库同步
+    -------------------
+    # 查看远程仓库地址
+    git remote -v
+
+    # 添加远程仓库
+    git remote add origin <url>
+
+    # 修改远程仓库地址
+    git remote set-url origin <url>
+
+    # 拉取远程最新代码（不合并）
+    git fetch
+
+    # 拉取并修剪已删除的远程分支引用
+    git fetch --prune
+
+    # 清除本地的无效远程分支引用
+    git remote prune origin
+
+    # 拉取并合并远程代码
+    git pull
+
+    # 拉取指定分支
+    git pull origin <分支名>
+
+    # 推送到远程仓库
+    git push origin <分支名>
+
+    # 首次推送并设置上游分支
+    git push -u origin <分支名>
+
+    # 强制推送（谨慎使用）
+    git push -f origin <分支名>
+    # 更安全的强制推送（仅当远程与本地记录一致时才推送）
+    git push --force-with-lease
+
+
+    5. 查看提交记录
+    -------------------
+    # 查看当前分支提交历史
+    git log
+
+    # 查看指定分支提交历史
+    git log <分支名>
+
+    # 以精简模式查看最近 N 条记录
+    git log --oneline -n 20
+
+    # 查看指定分支最近 N 条记录
+    git log <分支名> -n 5 --oneline
+
+    # 仅显示 commit hash 值
+    git log <分支名> -n 5 --pretty=format:"%H"
+
+    # 图形化查看分支合并历史
+    git log --graph --oneline --all
+
+    # 查看某个文件的提交历史
+    git log --oneline <文件名>
+
+    # 查看每次提交的变更内容
+    git log -p
+
+    # 查看某个提交的详细信息
+    git show <commit-id>
+
+    # 查看文件中每一行的最后修改者和时间
+    git blame <文件名>
+
+
+    6. 代码合并
+    -------------------
+    方式 A：Merge（合并）
+      git merge <目标分支>               # 例如 git merge develop
+      # 解决冲突后：
+      git add <已解决的文件>
+      git commit                         # 若自动生成合并提交则不需要手动 commit
+      git push
+
+      # 压缩合并（将所有提交压缩为一个提交再合并）
+      git merge --squash <目标分支>
+      git commit -m "合并说明"
+
+    方式 B：Rebase（变基）
+      git rebase <目标分支>              # 例如 git rebase develop
+      # 解决冲突后：
+      git add <已解决的文件>
+      git rebase --continue
+      # 放弃本次 rebase
+      git rebase --abort
+      git push --force-with-lease        # 变基后需强制推送
+
+      # 交互式变基（合并/拆分/修改多个提交）
+      git rebase -i HEAD~3               # 对最近3次提交进行操作
+
+
+    7. Cherry-pick（拣选提交）
+    -------------------
+    # 将指定提交应用到当前分支
+    git cherry-pick <commit-id>
+
+    # 拣选一段提交范围（左开右闭）
+    git cherry-pick <commit-A>..<commit-B>
+
+    # 拣选后推送到远程
+    git push origin <分支名>
+
+
+    8. Stash（暂存工作区）
+    -------------------
+    # 暂存当前工作区修改
+    git stash
+
+    # 暂存时添加说明
+    git stash save "暂存说明"
+
+    # 查看暂存列表
+    git stash list
+
+    # 恢复最近一次暂存（不删除 stash 记录）
+    git stash apply
+
+    # 恢复最近一次暂存（恢复后删除 stash 记录）
+    git stash pop
+
+    # 恢复指定暂存
+    git stash pop stash@{1}
+
+    # 删除最近一次暂存
+    git stash drop
+
+    # 清空所有暂存
+    git stash clear
+
+
+    9. Tag（标签管理）
+    -------------------
+    # 查看所有标签
+    git tag
+
+    # 创建轻量标签
+    git tag <标签名>
+
+    # 创建附注标签（含说明信息）
+    git tag -a <标签名> -m "标签说明"
+
+    # 为历史提交打标签
+    git tag -a <标签名> <commit-id> -m "标签说明"
+
+    # 推送标签到远程
+    git push origin <标签名>
+    git push origin --tags    # 推送所有标签
+
+    # 删除本地标签
+    git tag -d <标签名>
+
+    # 删除远程标签
+    git push origin :refs/tags/<标签名>
+
+
+    10. 撤销与回滚
+    -------------------
+    # 本地撤销 — reset（修改提交历史）
+    git reset --soft HEAD~1               # 撤销最后一次提交，保留修改在暂存区
+    git reset --soft HEAD~2               # 撤销最近两次提交
+    git reset --soft <commit-id>          # 撤销到指定提交，保留修改在暂存区
+    git reset --hard HEAD~1               # 撤销最后一次提交并丢弃所有修改（慎用）
+
+    # 远程撤销 — revert（生成新提交来抵消旧提交，不改动历史）
+    git revert HEAD                       # 抵消上一次提交
+    git revert <commit-id>                # 回退指定提交
+    git revert <commit-A>..<commit-B>     # 回退一个提交范围（左开右闭）
+
+    # 找回丢失的提交
+    git reflog                            # 查看所有操作记录（包括被删除的分支或 reset）
+    git checkout -b <新分支名> <commit-id> # 根据 reflog 中的 commit-id 恢复
+
+
+    11. 工作树（Worktree）
+    -------------------
+    # 创建新的工作树（在同一仓库下同时开发多个分支）
+    git worktree add <路径> <分支名>
+
+    # 查看所有工作树
+    git worktree list
+
+    # 删除工作树
+    git worktree remove <路径>
+
+    # 修剪已删除的工作树引用
+    git worktree prune
+
+
+    12. 其他常用操作
+    -------------------
+    # 清理未跟踪的文件和目录（预览）
+    git clean -nfd
+
+    # 清理未跟踪的文件和目录（执行）
+    git clean -fd
+
+    # 二分法定位引入 bug 的提交
+    git bisect start
+    git bisect bad                    # 标记当前版本有问题
+    git bisect good <commit-id>       # 标记已知正常的版本
+    # ... Git 会自动切换提交，测试后标记 good/bad ...
+    git bisect reset                  # 结束二分查找
+
+    # 生成 .gitignore 文件模板
+    # 常见内容：
+    # *.class        — 编译文件
+    # *.log          — 日志文件
+    # target/        — Maven 构建目录
+    # .idea/         — IDEA 配置目录
+    # *.iml          — IDEA 模块文件
+
+
+    13. 常见报错处理
+    -------------------
+    报错：unable to update local ref 或 expected ... but got ...
+    原因：本地分支与远程不一致，通常因为远程强制推送或删除了分支，而本地还保留着旧的引用。
+    解决方法：
+      git remote prune origin             # 清理残留引用
+      git fetch --prune                   # 重新拉取并修剪
+      git pull                            # 再次尝试拉取
+
+
+    14. 通用帮助命令
+    -------------------
+    # 查看 Git 所有命令
+    git help
+    git --help
+
+    # 查看特定命令的帮助
+    git help <命令名>
+    git <命令名> -h                       # 简洁版帮助
+    git <命令名> --help                   # 详细版帮助
+
      */
 
 }
