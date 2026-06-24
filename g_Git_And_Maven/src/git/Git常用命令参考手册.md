@@ -297,11 +297,24 @@ git tag -d <标签名>
 
 # 删除远程标签
 git push origin :refs/tags/<标签名>
+
+# 基于标签创建新分支
+git checkout -b <新分支名> <标签名>
 ```
 
 ---
 
 ## 10. 撤销与回滚
+
+### 撤销场景速查
+
+> 根据改动所处的阶段，选择对应的撤销方式。
+
+| 当前状态 | 撤销命令 | 效果 |
+|----------|----------|------|
+| 有改动，有 add，无 commit | `git reset HEAD <文件名>` | 从暂存区回退到工作区 |
+| 有改动，有 add，有 commit | `git reset --soft <commit-id>` | 从本地库回退到工作区 |
+| 有改动，有 add，有 commit，有 push | `git revert <commit-hash>` + `git push` | 生成反向提交并推送到远程 |
 
 ### 本地撤销 — `git reset`
 

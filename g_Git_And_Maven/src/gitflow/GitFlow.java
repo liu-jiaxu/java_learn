@@ -13,6 +13,7 @@ public class GitFlow {
 
     /*
     gitflow工作流程
+    相当于git命令与流程补充
 
     1.五大分支
     主分支main/master 生产环境分支，总分支，项目交付分支
@@ -28,6 +29,18 @@ public class GitFlow {
     （2）方便回溯：快速找到特定版本的代码，例如之前的分支（最新commit打了tag）出问题了需要新建分支修复，那么直接以tag为基础创建新分支即可
         git checkout -b 新分支名 标签名
         无需记录分支名和commit id
+
+    3.git stash暂存工作区（搁置）
+    需求：当前开发分支工作未完成，但需要切换到其它分支修改紧急bug，临时暂存当前工作区内容
+    常用命令
+    命令	                        说明
+    git stash	                搁置当前修改（工作区 + 暂存区）
+    git stash push -m "说明"	    带说明信息搁置
+    git stash list	            查看所有搁置记录
+    git stash pop	            恢复最新的搁置，并删除记录
+    git stash apply	            恢复最新的搁置，但保留记录
+    git stash drop	            删除最新的搁置记录
+    git stash clear	            清空所有搁置记录
      */
 
 }
