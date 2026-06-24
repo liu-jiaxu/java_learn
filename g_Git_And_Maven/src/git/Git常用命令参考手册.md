@@ -2,6 +2,32 @@
 
 ---
 
+## GitFlow 工作流程（分支策略）
+
+> 一种经典的分支管理模型，定义了五大分支角色及其协作关系。
+
+```
+main/master  ───●────────────●────────────●────→ 生产环境分支
+                ↑            ↑            ↑
+release       ──●────────────●────────────────→ 发布分支（测试/Bug修复）
+                ↑            ↑
+develop       ──●────●────●──●────●────●────●─→ 开发集成分支
+                ↑    ↑        ↑    ↑
+feature       ──●    ●────────●    ●──────────→ 功能分支
+                     ↑
+hotfix              ─●────────────────────────→ 热修复分支
+```
+
+| 分支 | 基础分支 | 合并目标 | 说明 |
+|------|----------|----------|------|
+| **main/master** | — | — | 生产环境分支，项目交付分支，只接受合并 |
+| **hotfix** | main | main + develop | main 出 bug 时拉取，修复后合并回 main 和 develop |
+| **release** | develop | main + develop | 发布准备分支，只加说明文档和 bug 修复，不加新功能 |
+| **develop** | main | main | 各项目组代码集成分支，存放最新开发成果 |
+| **feature** | develop | develop | 开发新功能的分支 |
+
+---
+
 ## 1. 初始化和配置
 
 ```bash
@@ -70,8 +96,6 @@ git branch -D <分支名>
 git push origin --delete <分支名>
 ```
 
----
-
 ## 3. 工作区操作
 
 ```bash
@@ -133,6 +157,13 @@ git remote prune origin
 # 拉取并合并远程代码
 git pull
 git pull origin <分支名>                    # 拉取指定分支
+
+# 拉取并以变基方式合并（保持线性历史）
+git pull --rebase
+
+# fetch 与 pull 的区别
+# git fetch  — 从远程拉取最新代码，不修改本地代码，仅更新远程跟踪分支（预览）
+# git pull   — 相当于 git fetch + git merge，直接合并到本地分支
 
 # 推送到远程仓库
 git push origin <分支名>
@@ -250,7 +281,7 @@ git push origin <分支名>
 ```bash
 # 暂存当前工作区修改
 git stash
-git stash save "暂存说明"                   # 暂存时添加说明
+git stash push -m "暂存说明"                 # 暂存时添加说明
 
 # 查看暂存列表
 git stash list
@@ -274,6 +305,11 @@ git stash clear
 ---
 
 ## 9. Tag（标签管理）
+
+> Tag 基于某个具体提交（commit）创建，而非基于分支。
+>
+> - **标记版本**：告诉他人（和未来的自己）某个提交属于哪个版本
+> - **方便回溯**：当旧分支已删除时，可以直接以 tag 为基础创建新分支，无需记住分支名或 commit id
 
 ```bash
 # 查看所有标签
@@ -346,7 +382,7 @@ git checkout -b <新分支名> <commit-id>       # 根据 reflog 中的 commit-i
 
 ---
 
-## 11. 工作树（Worktree）
+## 11. 工作树（worktree）
 
 > 在同一仓库下同时开发多个分支，无需来回切换。
 

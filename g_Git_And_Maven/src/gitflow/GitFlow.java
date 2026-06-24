@@ -49,7 +49,7 @@ public class GitFlow {
     5.merge & rebase
     merge保留全部历史记录
     rebase只会有主线记录
-    git pull --rebase
+    git pull --rebase 在本地 push 时远程发生变更，会提示手动解决冲突，并且不会生成脏日志
      */
 
 }
