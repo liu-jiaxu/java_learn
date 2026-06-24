@@ -1,15 +1,15 @@
 package maven;
 
 /**
- * ClassName: maven
- * Package: maven
+ * ClassName: Maven
+ * Package: Maven
  * Description:Maven介绍
  *
  * @Author: zgh296
  * @Create: 2023/7/5 - 21:04
  * @Version: v1.0
  */
-public class maven {
+public class Maven {
 
     // 依据PDF文件和课件资源网站学习，新建项目MavenWeb，注意回顾其中的项目！
     /*
